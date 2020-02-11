@@ -1,0 +1,22 @@
+---
+title: "class-2020-02-11"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(readxl)
+library(tidyverse)
+library(janitor)
+```
+
+```{r}
+x <- read_excel("class_enrollment_summary_by_term_2.11.20.xlsx", skip = 3)
+x_sorted <- x %>% 
+  clean_names() %>% 
+  #select(course_id, course_title, course_name, course_section_code, course_department, total) %>% 
+  #filter(course_department == "Government") %>% 
+  filter(!is.na(course_name))
+  #arrange(desc(total))
+
+```
